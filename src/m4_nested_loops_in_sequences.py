@@ -3,8 +3,8 @@ This project demonstrates NESTED LOOPS (i.e., loops within loops)
 in the context of SEQUENCES OF SUB-SEQUENCES.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Braden Smith.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -117,7 +117,7 @@ def multiply_numbers(sequence_of_lists):
        [FYI: This 'can be multiplied ...' is an example of DUCK TYPING.]
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #  ** READ THE TESTS that have been written for you (ABOVE).
     #  ** ASK QUESTIONS if you do not understand the TESTS (ABOVE).
     #
@@ -129,6 +129,9 @@ def multiply_numbers(sequence_of_lists):
     #        -- See   m2e_nested_loops_in_sequences   as needed.
     # ------------------------------------------------------------------
 
+    for k in range(len(sequence_of_lists)):
+        for j in range(len(sequence_of_lists[k])):
+            sequence_of_lists[k][j] = sequence_of_lists[k][j] * (k + 1)
 
 def run_test_sum_numbers():
     """ Tests the    sum_numbers    function. """
@@ -154,6 +157,15 @@ def run_test_sum_numbers():
 
     # TO DO 3 (continued): Add your ADDITIONAL test(s) here:
 
+    # Test 3:
+    expected = 304
+    answer = sum_numbers([1, 2, 3, 4, 5],[17, 29, 31, 89],[2, 27, 92],[2],[0])
+    print('Expected and actual are:', expected, answer)
+
+    # Test 4:
+    expected = 104
+    answer = sum_numbers([8, 24, 72])
+    print('Expected and actual are:', expected, answer)
 
 def sum_numbers(seq_seq):
     """
@@ -170,6 +182,11 @@ def sum_numbers(seq_seq):
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
 
+    sum = 0
+    for k in range(len(seq_seq)):
+        for j in range(len(seq_seq(k + 1))):
+            sum = sum + seq_seq[j]
+    return sum
 
 def run_test_print_characters():
     """ Tests the    print_characters    function. """
